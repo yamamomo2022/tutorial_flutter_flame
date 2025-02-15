@@ -1,0 +1,2 @@
+# tutorial_flutter_flame
+FlutterのFlameパッケージでゲームを作成してみるリポジトリです。
