@@ -15,6 +15,7 @@ class MyGame extends FlameGame with TapDetector {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+    add(Background()); // Add background
     player = Player()
       ..position = Vector2(size.x / 2, size.y - 50)
       ..size = Vector2(50, 50);
@@ -64,8 +65,8 @@ class Bullet extends PositionComponent with HasGameRef<MyGame> {
     super.update(dt);
     time += dt;
     position.y -= 300 * dt;
-    position.x += 5 *
-        cos(time *
+    position.x += 50 *
+        sin(time *
             5); // Adjust the multiplier to control the frequency and amplitude
     if (position.y < 0) {
       removeFromParent();
