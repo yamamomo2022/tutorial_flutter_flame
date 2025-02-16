@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'dart:math';
 
 void main() {
   final game = MyGame();
@@ -44,6 +45,8 @@ class Player extends PositionComponent {
 }
 
 class Bullet extends PositionComponent with HasGameRef<MyGame> {
+  double time = 0;
+
   @override
   Future<void> onLoad() async {
     super.onLoad();
@@ -59,7 +62,11 @@ class Bullet extends PositionComponent with HasGameRef<MyGame> {
   @override
   void update(double dt) {
     super.update(dt);
+    time += dt;
     position.y -= 300 * dt;
+    position.x += 5 *
+        cos(time *
+            5); // Adjust the multiplier to control the frequency and amplitude
     if (position.y < 0) {
       removeFromParent();
     }
